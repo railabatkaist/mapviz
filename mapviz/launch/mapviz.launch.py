@@ -17,7 +17,7 @@ def generate_launch_description():
             name="initialize_origin",
             parameters=[
                 {"name": "local_xy_frame", "value": "map"},
-                {"name": "local_xy_origin", "value": "swri"},
+                {"name": "local_xy_origin", "value": "auto"},
                 {"name": "local_xy_origins", "value": """[
                     {"name": "swri",
                         "latitude": 29.45196669,
@@ -30,7 +30,8 @@ def generate_launch_description():
                         "altitude": 200.0,
                         "heading": 0.0}
                 ]"""}
-            ]
+            ],
+            remappings=[('/fix', '/robot/gps')]
         ),
         launch_ros.actions.Node(
             package="tf2_ros",
